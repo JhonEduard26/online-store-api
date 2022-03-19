@@ -1,0 +1,37 @@
+{
+  "name": "online-store-api",
+  "version": "1.0.0",
+  "description": "API of an online store using express.js and node.js\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Drest on an online store using express.js and node.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JhonEduard26/online-store-api.git"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "express",
+    "javascript"
+  ],
+  "author": "Jhon Eduard Bocanegra Ortiz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JhonEduard26/online-store-api/issues"
+  },
+  "homepage": "https://github.com/JhonEduard26/online-store-api#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.0"
+  }
+}
