@@ -11,37 +11,28 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  const product = service.findOne(id);
-  if (!product) res.status(404).send('Not found');
-  else res.status(200).json(product);
+  const user = service.findOne(id);
+  if (!user) res.status(404).send('Not found');
+  else res.status(200).json(user);
 });
 
 router.post('/', (req, res) => {
   const body = req.body;
-  res.status(201).json({
-    message: 'created',
-    data: body,
-  });
+  const newUser = service.create(body);
+  res.status(201).json(newUser);
 });
 
 router.patch('/:id', (req, res) => {
   const body = req.body;
   const { id } = req.params;
-
-  res.json({
-    message: 'updated',
-    data: body,
-    id,
-  });
+  const user = service.update(id, body);
+  res.status(200).json(user);
 });
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-
-  res.json({
-    message: 'deleted',
-    id,
-  });
+  const rta = service.delete(id);
+  res.status(200).json(rta);
 });
 
 module.exports = router;

@@ -18,7 +18,17 @@ class OrdersService {
     }
   }
 
-  create() {}
+  create({ name, orderDate, orderTotal }) {
+    const newOrder = {
+      id: faker.faker.datatype.uuid(),
+      name,
+      orderDate,
+      orderTotal,
+    };
+
+    this.orders.push(newOrder);
+    return newOrder;
+  }
 
   find() {
     return this.orders;
@@ -28,9 +38,25 @@ class OrdersService {
     return this.orders.find((item) => item.id === id);
   }
 
-  update() {}
+  update(id, changes) {
+    const idx = this.orders.findIndex((item) => item.id === id);
+    if (idx === -1) throw new Error('Order not found');
 
-  delete() {}
+    const order = this.orders[idx];
+    this.orders[idx] = {
+      ...order,
+      ...changes,
+    };
+    return this.orders[idx];
+  }
+
+  delete(id) {
+    const idx = this.orders.findIndex((item) => item.id === id);
+    if (idx === -1) throw new Error('Order not found');
+
+    this.orders.splice(idx, 1);
+    return { id };
+  }
 }
 
 module.exports = OrdersService;

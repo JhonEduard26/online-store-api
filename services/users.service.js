@@ -19,7 +19,17 @@ class UsersService {
     }
   }
 
-  create() {}
+  create({ name, email, password }) {
+    const newUser = {
+      id: faker.faker.datatype.uuid(),
+      name,
+      email,
+      password,
+    };
+
+    this.users.push(newUser);
+    return newUser;
+  }
 
   find() {
     return this.users;
@@ -29,9 +39,25 @@ class UsersService {
     return this.users.find((item) => item.id === id);
   }
 
-  update() {}
+  update(id, changes) {
+    const idx = this.users.findIndex((item) => item.id === id);
+    if (idx === -1) throw new Error('User not found');
 
-  delete() {}
+    const user = this.users[idx];
+    this.users[idx] = {
+      ...user,
+      ...changes,
+    };
+    return this.users[idx];
+  }
+
+  delete(id) {
+    const idx = this.users.findIndex((item) => item.id === id);
+    if (idx === -1) throw new Error('User not found');
+
+    this.users.splice(idx, 1);
+    return { id };
+  }
 }
 
 module.exports = UsersService;
