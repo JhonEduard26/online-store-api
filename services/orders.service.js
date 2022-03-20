@@ -18,7 +18,7 @@ class OrdersService {
     }
   }
 
-  create({ name, orderDate, orderTotal }) {
+  async create({ name, orderDate, orderTotal }) {
     const newOrder = {
       id: faker.faker.datatype.uuid(),
       name,
@@ -30,15 +30,15 @@ class OrdersService {
     return newOrder;
   }
 
-  find() {
+  async find() {
     return this.orders;
   }
 
-  findOne(id) {
+  async findOne(id) {
     return this.orders.find((item) => item.id === id);
   }
 
-  update(id, changes) {
+  async update(id, changes) {
     const idx = this.orders.findIndex((item) => item.id === id);
     if (idx === -1) throw new Error('Order not found');
 
@@ -50,7 +50,7 @@ class OrdersService {
     return this.orders[idx];
   }
 
-  delete(id) {
+  async delete(id) {
     const idx = this.orders.findIndex((item) => item.id === id);
     if (idx === -1) throw new Error('Order not found');
 
