@@ -9,11 +9,15 @@ router.get('/', async (req, res) => {
   res.json(users);
 });
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const user = await service.findOne(id);
-  if (!user) res.status(404).send('Not found');
-  else res.status(200).json(user);
+router.get('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await service.findOne(id);
+    if (!user) res.status(404).send('Not found');
+    else res.status(200).json(user);
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.post('/', async (req, res) => {
@@ -22,28 +26,24 @@ router.post('/', async (req, res) => {
   res.status(201).json(newUser);
 });
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res, next) => {
   try {
     const body = req.body;
     const { id } = req.params;
     const user = await service.update(id, body);
     res.status(200).json(user);
   } catch (error) {
-    res.status(404).json({
-      message: error.message,
-    });
+    next(error);
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
     const rta = await service.delete(id);
     res.status(200).json(rta);
   } catch (error) {
-    res.status(404).json({
-      message: error.message,
-    });
+    next(error);
   }
 });
 

@@ -1,4 +1,5 @@
 const faker = require('@faker-js/faker');
+const boom = require('@hapi/boom');
 
 class OrdersService {
   constructor() {
@@ -35,12 +36,14 @@ class OrdersService {
   }
 
   async findOne(id) {
-    return this.orders.find((item) => item.id === id);
+    const order = this.orders.find((item) => item.id === id);
+    if (!order) throw boom.notFound('order not found');
+    return order;
   }
 
   async update(id, changes) {
     const idx = this.orders.findIndex((item) => item.id === id);
-    if (idx === -1) throw new Error('Order not found');
+    if (idx === -1) throw boom.notFound('order not found');
 
     const order = this.orders[idx];
     this.orders[idx] = {
@@ -52,7 +55,7 @@ class OrdersService {
 
   async delete(id) {
     const idx = this.orders.findIndex((item) => item.id === id);
-    if (idx === -1) throw new Error('Order not found');
+    if (idx === -1) throw boom.notFound('order not found');
 
     this.orders.splice(idx, 1);
     return { id };

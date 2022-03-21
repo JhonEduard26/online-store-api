@@ -26,6 +26,7 @@
   "homepage": "https://github.com/JhonEduard26/online-store-api#readme",
   "dependencies": {
     "@faker-js/faker": "^6.0.0",
+    "@hapi/boom": "^9.1.4",
     "express": "^4.17.3"
   },
   "devDependencies": {
