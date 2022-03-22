@@ -27,7 +27,8 @@
   "dependencies": {
     "@faker-js/faker": "^6.0.0",
     "@hapi/boom": "^9.1.4",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "joi": "^17.6.0"
   },
   "devDependencies": {
     "eslint": "^8.11.0",
