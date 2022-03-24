@@ -9,7 +9,7 @@ const {
 const routerApi = require('./routes');
 
 const app = express();
-const port = 3000;
+const port = process.dev.PORT || 3000;
 
 const whitelist = ['http://127.0.0.1:5500'];
 const corsOptions = {
